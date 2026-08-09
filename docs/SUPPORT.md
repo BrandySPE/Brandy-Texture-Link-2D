@@ -1,60 +1,60 @@
-# 2D Link 1.6.3 — Support
+# Brandy Texture Link 2D — Support
 
-[Product Home](../README.md) · [Quick Start](QUICK_START.md) · [User Guide](USER_GUIDE.md) · [Compatibility](COMPATIBILITY_AND_PURCHASE_CHECKLIST.md) · [简体中文](SUPPORT_zh-CN.md)
+[Home](../README.md) · [User Guide](UserGuide.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [技术支持](技术支持.md)
 
-Private product support is available at **brandyspe2026@gmail.com**.
+## Purchase
 
-Use public storefront comments for general pre-purchase questions only. Do not post Operation Reports, local paths, customer information, credentials, or unpublished artwork in public comments.
+Official purchase channels for Brandy Texture Link 2D:
 
-## Before sending a report
+Superhive: https://superhivemarket.com/products/brandy-2d-link
 
-When an operation stops, read the message dialog and the first blocked condition in the **Operation Report**. Most setup, naming, file-state, and document-structure problems can be corrected directly from those messages.
+itch.io: https://brandyspe.itch.io/brandy-2d-link
 
-To open the report, expand **Photoshop Settings** in the Brandy sidebar and click **Open Operation Report**. The latest complete report is also stored in the Blender Text data-block:
+Thank you for your purchase and support. It means a great deal to an independent developer.
 
-`BRANDY_2D_LINK_Last_Report`
+Update eligibility and the duration of technical support follow the sales terms shown on the storefront where you purchased the product. Versions released and obtained during your eligible update period remain yours to keep.
 
-Correct the reported condition and run the operation again. Do not clear project locks or use recovery tools unless the panel or report identifies the matching state.
+Public comment sections on storefront pages are best used for pre-purchase questions. Do not post execution reports, local file paths, client information, account credentials, or unreleased artwork in public comments, as these may expose private information.
 
-## What to include
+## Support
 
-A useful support email should contain:
+### Contact
 
-1. **2D Link version** and where the package was purchased.
-2. **Blender version**, **Windows version**, and **Photoshop version**.
-3. The **PS Executable** path and version shown by **Test PS**.
-4. Whether **PS Execution Mode** is **Auto** or **Manual Script**.
-5. The project storage type, such as a standard local drive, synchronized folder, network share, or managed workstation.
-6. Exact steps that reproduce the problem.
-7. What you expected and what happened instead.
-8. The complete visible error message.
-9. A redacted copy of the relevant Operation Report.
+Maintenance and support email:
 
-For a repeatable project-specific problem, test with a copy of the project before sharing any files. Do not send production artwork unless it is necessary and you are authorized to share it.
+**brandyspe2026@gmail.com**
 
-## Privacy check
+I will reply within `3 business days` after receiving your email.
 
-Reports and task logs may contain local file paths, Windows account names, project names, customer names, or references to unpublished artwork. Remove private or confidential information before sending them.
+A useful support email should include:
 
-Never include passwords, license keys, access tokens, cloud credentials, or unrelated customer files.
+1. Your **Brandy Texture Link 2D version** and where you purchased it;
 
-**Open Task Log Folder** may provide additional diagnostic information when requested. Review every file before attaching it.
+2. your **Blender version**, **Windows version**, and **Photoshop version**;
 
-## Support scope
+3. where the project assets are stored, such as a standard local drive, synchronized folder, or network share. If necessary, include the relevant full path after removing private or client-identifying information;
 
-Support covers the unmodified 1.6.3 product package, the documented Blender–Photoshop workflow, and the features described in this repository.
+4. what you expected to happen and what the add-on actually produced;
 
-The following may require separate investigation and are not guaranteed to be reproducible:
+5. any visible Blender error message, add-on warning or error text, and the relevant contents of **Open Detailed Report**.
 
-- unlisted Blender or Photoshop versions;
-- beta, nightly, or modified host applications;
-- network, NAS, virtual, linked, or delayed-sync storage;
-- restrictive workstation policies that block Photoshop scripting;
+If the problem only occurs in one project, first try to reproduce it in a copy of that project. A small reproduction project is usually the most effective way to distinguish an add-on issue from an asset or environment issue.
+
+Avoid attaching production artwork unless it is genuinely necessary and you have permission to share it.
+
+Remove private or confidential information before sending your report.
+
+### Support Scope
+
+Technical support covers unmodified Brandy Texture Link 2D product packages purchased through an official storefront, the Blender–Photoshop workflows documented in this GitHub repository, and the features described in the documentation.
+
+The following environments may require separate investigation:
+
+- Blender or Photoshop versions not included in the tested-version list;
+- Beta, Nightly, or modified host applications;
+- network drives, NAS devices, virtual filesystems, linked directories, or delayed synchronization folders;
+- workstation policies that restrict Windows Script Host / `cscript`, COM automation, or Photoshop script execution;
 - modified add-on code, generated project files, or linked PSD/PSB structures;
 - conflicts caused by third-party add-ons, custom node systems, or studio automation.
 
-A small reproduction project is the most effective way to separate a 2D Link problem from asset-specific or environment-specific behavior.
-
-## Response target
-
-The initial response target is within **three calendar days**. Complex compatibility or project-specific cases may take longer. Storefront billing, refunds, and account access are handled under the policy of the storefront where the purchase was made.
+I will do my best to investigate these cases after receiving your email. Because these environments can differ significantly from the tested setup, I cannot guarantee that every issue can be reproduced or resolved.

@@ -1,76 +1,122 @@
-# 2D Link | Multi-Texture Roundtrip for Blender & Adobe Photoshop
+# Brandy Texture Link 2D
 
-[简体中文](README_zh-CN.md) · [Quick Start](docs/QUICK_START.md) · [User Guide](docs/USER_GUIDE.md) · [Compatibility](docs/COMPATIBILITY_AND_PURCHASE_CHECKLIST.md) · [Support](docs/SUPPORT.md)
+[User Guide](docs/UserGuide.md) · [Support](docs/Support.md) · [Maintenance](docs/Maintenance.md) · [Change Log](docs/ChangeLog.md) · [中文主页](README_zh-CN.md)
 
-**Paint the whole asset in Adobe Photoshop. Keep every texture separate in Blender.**
+**Brandy Texture Link 2D is a Blender add-on built for 2D game and animation workflows. It opens textures in Photoshop, reloads saved texture changes in Blender, and can create Blender assets from the layer layout of PSD documents.**
 
-2D Link is a Windows x64 Blender add-on for cutout characters, modular sprites, layered game art, and other multi-part 2D assets. It supports two focused Photoshop workflows: direct editing of one project texture, and full-asset painting through a linked PSD/PSB while Blender continues to use separate texture files.
+If you work with 2D characters or scenes and need to rebuild a Blender texture layout in Photoshop, import the layer layout of a PSD document into Blender, or move back and forth while making texture edits, the add-on reduces the amount of manual relinking and setup required.
 
-Inside Blender, the add-on appears as **Brandy 2D Link** in the **Brandy** sidebar tab.
+For a quick start, follow the workflows below. For more detailed use, watch the tutorials or see the [User Guide](docs/UserGuide.md).
 
-This repository is the public product and documentation hub. It is not the installable add-on package. Installable builds are distributed through the storefronts below and include the corresponding GPL-licensed source code.
+The add-on includes safeguards for file validation, project backups, project recovery, and related operations. It has also completed a 7 × 5 test matrix that includes Blender 5.2.0 LTS. See [Maintenance](docs/Maintenance.md) for test details and usage notes.
 
-## Get 2D Link
+The interface is available in Chinese and English. You can change the default language with **Interface Language** under **Settings & Reports**. Restart the add-on or Blender afterward to refresh the panels.
 
-- [Superhive](https://superhivemarket.com/products/brandy-2d-link)
-- [itch.io](https://brandyspe.itch.io/brandy-2d-link)
+If you have questions or need to report an issue, see [Support](docs/Support.md) or contact **brandyspe2026@gmail.com**. I will reply as soon as I can after receiving your email.
 
-Do not install GitHub's repository ZIP through Blender. Use the complete product ZIP supplied by one of the storefronts.
+## Install and Create a Project
 
-## Watch the workflow
+### Install the Add-on
+
+1. In Blender, open **Edit** > **Preferences** > **Get Extensions** > the menu in the upper-right corner > **Install from Disk**, then select the complete Brandy Texture Link 2D.zip package. Do not extract the ZIP file first.
+
+2. Make sure Brandy Texture Link 2D is enabled under **Preferences** > **Add-ons**.
+
+3. Return to the 3D View, press `N` to open the sidebar, then open the **Brandy** tab.
+
+### From Blender to Photoshop
+
+1. Open the add-on panel. Under **Photoshop Path**, select `Photoshop.exe` from your Photoshop installation folder, then click **Open Photoshop**.
+
+2. Keep **Texture Source** set to **Blender Collection**. Put all flat rectangular Mesh objects you want to edit (referred to below as `2D sprites`) into one Blender collection, then choose that collection under **Project Collection**.
+
+3. Under **Project Folder**, choose an empty local folder and click **Create Project**. If the selected path already contains a project created by the add-on, **Create Project** automatically changes to **Open Existing Project**.
+
+4. The add-on copies the textures used by the 2D sprites into the project folder and creates a new PSD document. If the canvas exceeds 30,000 pixels, it automatically creates a PSB instead. Photoshop reconstructs the sprite arrangement from Blender. The source textures used before project creation are not modified.
+
+5. The PSD contains three reserved groups: **BTL2 Linked Content**, **BTL2 Merge Layers**, and **BTL2 Merged Layers**. Do not manually move, replace, or rename these groups. Keep the document structure in its default state.
+
+## Texture Editing and Auto Reload
+
+### Mode 1: Edit a Single Texture
+
+When you only need to edit one texture, open its Smart Object directly from the PSD created by the add-on. You can also select a 2D sprite in Blender and click **Edit Single Texture** to open the corresponding texture file.
+
+When **Auto Reload** is enabled (the button is highlighted), saving in Photoshop with `Ctrl+S` can trigger Blender to reload the updated texture. Auto Reload is not instantaneous; expect a delay of around 3 seconds, depending on project size and hardware.
+
+You can also disable **Auto Reload** and use **Reload Textures** after editing and saving.
+
+In `single-texture editing`, save the `Smart Object` or `individual texture file`, not only the main PSD document.
+
+### Mode 2: Paint Across Multiple Textures
+
+Suppose you want to paint one pattern across three textures named `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`.
+
+Create a new layer in the main PSD and paint the artwork. Press `Ctrl+J` twice to create two copies, giving you three layers with identical content.
+
+Rename the three layers to `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`, place all three directly inside **BTL2 Merge Layers**, then save the main PSD document.
+
+Click **Apply Multi-Texture Edits** in Blender. The artwork is applied to the three matching textures. Pixels outside each target texture canvas are clipped.
+
+If you do not want to keep the result, use the newly available **Revert Last Applied Edit** action to restore the previous state safely.
+
+## Import a PSD Document
+
+1. Make sure the add-on is installed as described above and Photoshop is open. In the add-on panel, change **Texture Source** to **Photoshop Document**, then choose the PSD document you want to import under **PSD Document**.
+
+2. Under **Project Folder**, choose an empty local folder. Set options such as **Transparent Pixel Padding** and **Use Alpha**, then click **Create Project**.
+
+3. During import, the add-on creates a 2D sprite for each successfully imported layer or asset unit and connects the resulting texture to its material.
+
+For PSD files with complex structures, simplify the document when possible before importing. If the document contains many linked Smart Objects, layer styles, or similar content, the add-on provides three handling modes: **Simplify Complex Layers**, **Skip Complex Layers**, and **Preserve Usable Content**. Complex effects may still lose information during import.
+
+PSB files are supported as a compatibility option, but very large or highly complex documents may not import completely.
+
+4. After the import and project creation complete successfully, all generated 2D sprites are placed in a Blender collection. Click **Open Existing Project** to continue working with the project, then edit textures in Photoshop and use Auto Reload as usual.
+
+## Demos and Tutorials
+
+The current tutorials were made for an earlier version of the add-on. The core workflow is still applicable, but some button names have changed. New tutorials will replace them when ready. Until then, use the written [User Guide](docs/UserGuide.md) as the primary reference.
+
+- [Chinese demo and tutorial](https://www.youtube.com/watch?v=-xTnPTlHHwc)
 
 - [English demo and tutorial](https://www.youtube.com/watch?v=seKdFcPqHf4)
-- [中文演示与教程](https://www.youtube.com/watch?v=-xTnPTlHHwc)
 
-## How it works
+## Get Brandy Texture Link 2D
 
-### Quick Texture Edit
+This GitHub repository is the product home page and does not include an installable add-on package. Use the complete ZIP package provided through a sales channel.
 
-Select a sprite object in Blender and open its project texture in Adobe Photoshop. Paint, save, then update Blender with **Reload Textures** or save-triggered **Auto Reload**.
+Superhive: https://superhivemarket.com/products/brandy-2d-link
 
-This is the direct route for cleanup, color changes, and other edits that affect one texture.
+itch.io: https://brandyspe.itch.io/brandy-2d-link
 
-### Full-Asset Painting
+Free lightweight texture-editing add-on: [Brandy Texture Link Lite](https://github.com/BrandySPE/Brandy-Texture-Link-Lite)
 
-Open the linked PSD/PSB to view the assembled Blender asset. Each part appears as a linked Smart Object, so seams, overlaps, alignment, and neighboring textures remain visible while you paint.
+## Other Information
 
-To write finished artwork back, place visible, name-matched layers directly inside **Brandy | Merge Layers**, save the PSD/PSB, and run **Apply “Merge Layers” to Source Textures** in Blender. In this command, **Source Textures** means the texture files inside the active 2D Link project.
+**Brandy Texture Link 2D** was previously released as **Brandy 2D Link**. Version **1.1.0** is the first public release under the new name.
 
-Saving the linked PSD/PSB does not update every texture by itself. Multi-texture write-back is a separate, explicit action.
+The rename accompanies a major overhaul of the core workflow, including `PSD import` and a simplified, rebuilt interface.
 
-## Project files
+Users who previously received the older version have been provided with the new version.
 
-When you create a project, 2D Link copies eligible textures into the project folder and reconnects Blender to those copies. The files used before project creation remain unchanged. From that point onward, direct texture editing, Auto Reload, and Merge Layers write-back use the project textures.
+## Support Information
 
-Before a multi-texture write-back, 2D Link checks the linked document and target textures and creates verified backups of the affected files. **Undo Last Merge** can restore the latest successful write-back while the project files still match its recorded recovery state.
-
-These safeguards do not replace normal production backups or version control.
-
-## Requirements
+### Supported Environment
 
 - Windows x64
-- Blender 4.2.0 through 5.1.x
-- Adobe Photoshop desktop for Windows; no separate Photoshop panel or extension is required
-- Local PNG, TGA, JPG, or JPEG texture files
-- A project folder on a standard local drive
-- Flat rectangular image planes with rectangular active UVs, a consistent 2D plane orientation, and unique part base names
+- Blender 4.2.0–5.2.0, including 5.2.0
+- Adobe Photoshop desktop CC2017–2026, including 2026
 
-The workflow is save-triggered. It does not stream individual brush strokes from Photoshop to Blender.
+### Supported Asset Types
 
-Version 1.6.3 completed the documented workflow across 30 tested Blender–Photoshop combinations. Exact versions, workflow limits, and purchase checks are listed in the [Compatibility and Purchase Checklist](docs/COMPATIBILITY_AND_PURCHASE_CHECKLIST.md).
+- PNG, JPG, JPEG, and TGA textures.
+- Flat characters or layered artwork in PSD documents.
+- Rectangular image-plane meshes in Blender.
+- 2D characters or scenes based on a static layout.
 
-## Documentation
+## License and Independent Product Notice
 
-- [Quick Start](docs/QUICK_START.md) — complete one single-texture roundtrip and one Merge Layers write-back.
-- [User Guide](docs/USER_GUIDE.md) — detailed operating instructions for the complete feature set.
-- [Compatibility and Purchase Checklist](docs/COMPATIBILITY_AND_PURCHASE_CHECKLIST.md) — tested versions, system and asset requirements, storage limits, and optional JSON scope.
-- [Support](docs/SUPPORT.md) — how to check a failed operation and send a useful private report.
-- [Superhive FAQ](https://superhivemarket.com/products/brandy-2d-link/faq) — concise answers to common pre-purchase questions.
+The add-on package is distributed under GPL-3.0-or-later and includes the corresponding source code.
 
-New users should begin with the [Quick Start](docs/QUICK_START.md).
-
-## License and independent product notice
-
-The add-on package is distributed under GPL-3.0-or-later and includes its corresponding source code.
-
-2D Link is an independent product and is not affiliated with or endorsed by Adobe, the Blender Foundation, or their related organizations. See [NOTICE.md](NOTICE.md) for trademark information.
+Brandy Texture Link 2D is an independent product and is not affiliated with or endorsed by Adobe, the Blender Foundation, or their related organizations. See [NOTICE.md](NOTICE.md) for trademark information.

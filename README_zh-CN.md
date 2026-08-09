@@ -1,76 +1,122 @@
-# 2D Link | Blender 与 Adobe Photoshop 多贴图往返工作流
+# Brandy Texture Link 2D —— 中文主页
 
-[English](README.md) · [快速入门](docs/QUICK_START_zh-CN.md) · [用户指南](docs/USER_GUIDE_zh-CN.md) · [兼容性](docs/COMPATIBILITY_AND_PURCHASE_CHECKLIST_zh-CN.md) · [技术支持](docs/SUPPORT_zh-CN.md)
+[用户指南](docs/用户指南.md) · [技术支持](docs/技术支持.md) · [维护信息](docs/维护信息.md) · [更新日志](docs/更新日志.md) · [README](README.md)
 
-**在 Adobe Photoshop 中绘制完整资产，同时让 Blender 继续使用独立贴图。**
+**本插件是专为 2D 游戏和动画管线设计的 Blender 关联插件，可调用 Photoshop 编辑并自动刷新贴图；支持从 PSD 文档读取图层和布局导入 Blender。**
 
-2D Link 是一款面向 Windows x64 的 Blender 插件，适用于剪纸角色、模块化精灵图、分层游戏美术和其他多部件 2D 资产。它提供两种明确的 Photoshop 工作方式：直接编辑一张项目贴图，或通过关联 PSD/PSB 查看并绘制完整资产，同时让 Blender 保持各部件贴图彼此独立。
+如果您在制作 2D 角色和场景，需要在 Photoshop 中复原 Blender 的贴图排列，或是需要在 Blender 中导入 PSD 文档的图层排列，同时进行一些贴图修改工作，那么本插件能有效降低您的关联成本。
 
-插件在 Blender 中显示为 **Brandy 2D Link**，主要工具位于 3D 视图的 **Brandy** 侧栏标签中。
+快速入门流程可直接阅读下文，深度使用，可观看视频教程或查看 [用户指南](docs/用户指南.md)。
 
-本仓库是公开的产品主页与文档中心，不是可安装的插件包。可安装版本通过下方销售页面提供，并包含对应的 GPL 授权源代码。
+本插件进行了多项安全设计，针对文件检测、项目备份、项目恢复等内容具备防护能力，并完成了包含 Blender 5.2.0 LTS 在内的 7 * 5 矩阵测试，测试详情及使用须知请查看 [维护信息](docs/维护信息.md)。
 
-## 获取 2D Link
+插件支持中英双语，您可通过 **设置与报告** 分栏中的 **插件界面语言** 修改默认语言，修改后需要重启插件或 Blender 刷新面板。
 
-- [Superhive](https://superhivemarket.com/products/brandy-2d-link)
-- [itch.io](https://brandyspe.itch.io/brandy-2d-link)
+如果您有疑问或需要反馈的内容，可查看 [技术支持](docs/技术支持.md) 或联系：**brandyspe2026@gmail.com**，我看到邮件后会尽快回复。
 
-不要把 GitHub 的仓库 ZIP 安装到 Blender。请使用销售页面提供的完整产品 ZIP。
+## 安装与新建
 
-## 查看工作流
+### 安装插件
+
+1. 在 Blender 中打开 **编辑** > **偏好设置** > **获取扩展** > 右上角菜单的 **从磁盘安装**，选择完整的 Brandy Texture Link 2D.zip 插件包。请不要解压 ZIP 文件。
+
+2. 确保您在 **偏好设置** > **插件** 中启用了 Brandy Texture Link 2D。
+
+3. 回到 3D 视图中按 `N` 键打开侧边栏，之后打开 **Brandy** 标签。
+
+### 从 Blender 到 Photoshop
+
+1. 打开插件面板，在 **Photoshop 路径** 中选择 Photoshop 安装路径里的 `Photoshop.exe`，执行 **打开 Photoshop**。
+
+2. 保持 **贴图来源** 为 **Blender 集合**，将所有您需要编辑的平面矩形 Mesh 对象（后文简称为 `2D 面片`）放入一个 Blender 集合，并在 **项目集合** 中选择该集合。
+
+3. 在 **项目包路径** 中选择一个本地空文件夹，点击 **创建项目**。如果您的路径中包含插件创建过的项目，**创建项目** 会自动切换为 **打开已有项目**。
+
+4. 插件会复制集合中所有 2D 面片的贴图，粘贴到项目包中，并创建一个新的 PSD 文档（超过 30000 像素时自动改为 PSB 文档），在 Photoshop 中复原 Blender 里的面片排列状态。您创建项目前的源贴图不会受到修改。
+
+5. 在 PSD 文档中，您可以看到 **BTL2 关联图层**、**BTL2 待合并图层**、**BTL2 已合并图层** 三个图层组，请不要进行移动、替换或重命名等手动修改，确保文档结构为默认状态。
+
+## 编辑贴图与自动刷新
+
+### 模式一：单图编辑
+
+当您需要编辑单一贴图时，可直接在插件创建的 PSD 文档中打开智能对象并编辑；或者直接在 Blender 中选中某个 2D 面片，点击插件的 **编辑单一贴图**，即可打开对应的贴图文件进行编辑。
+
+当 **自动刷新** 处于激活状态时（按键亮起），您在 Photoshop 中的 `保存（Ctrl+S）` 操作可自动触发 Blender 中的刷新显示。自动刷新并非实时同步，可能存在 3 秒左右延迟，受项目大小及硬件情况影响。
+
+您也可以关闭 **自动刷新**，在编辑并保存后，通过 **刷新贴图** 进行手动刷新。
+
+在 `单图编辑` 模式中，您的编辑和保存对象需要是 `智能对象` 或 `单一贴图文件`，而非总 PSD 文档。
+
+### 模式二：整体绘制
+
+当您需要进行整体绘制时，例如：绘制一条横跨 `Leg_Thigh` 、`Leg_Shin` 、`Leg_Foot` 三张贴图的花纹。
+
+您可直接在总 PSD 文档中新建一个图层进行绘制，之后对该图层执行两次 `复制并创建新图层（Ctrl+J）` 操作，可以得到三个相同内容的图层。
+
+将三个图层分别重命名为 `Leg_Thigh`、`Leg_Shin`、`Leg_Foot`，并全部放入 **BTL2 待合并图层** 图层组中，之后对总 PSD 文档执行保存。
+
+点击插件的 **应用多图编辑**，您的绘制内容会被分别应用到三张贴图中，超过对应贴图画布大小的像素会被裁切。
+
+如果您不满意此次修改，可点击新弹出的 **撤销前一次应用** 进行安全撤销。
+
+## 导入 PSD 文档
+
+1. 正常完成前文提到的插件安装，并打开 Photoshop。在插件面板中，将 **贴图来源** 切换至 **Photoshop 文档**，并在 **PSD 文档** 中选择您要导入的 PSD 文档。
+
+2. 在 **项目包路径** 中选择一个本地空文件夹，并在下方的导入参数中设置 **透明像素边距**、**使用 Alpha** 等内容，之后点击 **创建项目**。
+
+3. PSD 文档导入时，插件会为每个成功导入的图层或资产创建一张 2D 面片，并将图层内容作为贴图接入材质。
+
+处理复杂结构的 PSD 时，请尽可能将其转为精简的 PSD 文档。如果您的文档中存在大量智能对象链接、图层样式等内容，插件会提供 **统一简化**、**全部忽略**、**保留可用内容** 三种处理方式，但复杂效果导入后仍可能有损。
+
+PSB 文档格式可作为兼容项导入，但体积较大或过于复杂的文档可能无法完整导入。
+
+4. 成功导入并创建项目后，所有 2D 面片会位于 Blender 集合中，您可点击 **打开已有项目** 正常进行项目操作，在 Photoshop 中完成编辑贴图与自动刷新。
+
+## 演示与教程
+
+当前教程为插件早期版本的使用教程，核心功能仍可使用，但部分按键名称已发生变化，新教程制作完成后会进行替换，请先以 [用户指南](docs/用户指南.md) 中的文字教程为准。
 
 - [中文演示与教程](https://www.youtube.com/watch?v=-xTnPTlHHwc)
+
 - [English demo and tutorial](https://www.youtube.com/watch?v=seKdFcPqHf4)
 
-## 工作方式
+## 获取渠道
 
-### 单贴图快速编辑
+本 GitHub 仅为产品主页，不含可安装插件包，请使用销售渠道提供的完整插件 ZIP。
 
-在 Blender 中选择一个精灵面片，并用 Adobe Photoshop 打开它的项目贴图。绘制并保存后，通过 **手动刷新** 或保存触发的 **自动刷新** 更新 Blender 中的显示。
+Superhive 页面：https://superhivemarket.com/products/brandy-2d-link
 
-该方式适合清理、调色和其他只影响一张贴图的修改。
+Itch 页面：https://brandyspe.itch.io/brandy-2d-link
 
-### 完整资产绘制
+免费下载轻量版贴图编辑插件：[Brandy Texture Link Lite](https://github.com/BrandySPE/Brandy-Texture-Link-Lite)
 
-打开关联 PSD/PSB 查看组装后的 Blender 资产。每个部件都以关联智能对象显示，因此绘制时可以同时判断接缝、重叠、对齐和相邻贴图关系。
+## 其他信息
 
-准备写回时，将可见且名称匹配的图层直接放入 **Brandy | Merge Layers**，保存 PSD/PSB，再从 Blender 执行 **将 PS 合并组应用到源贴图**。此命令中的“源贴图”指当前 2D Link 项目内部的贴图文件。
+**Brandy Texture Link 2D** 原名为 **Brandy 2D Link**，更名后的第一个公开版本为 **1.1.0**。
 
-仅保存关联 PSD/PSB 不会自动更新全部贴图。多贴图写回是一个独立、明确的操作。
+此次更名是对核心功能进行全面优化，加入了 `PSD 导入功能`，并对 UI 内容进行了精简化重构。
 
-## 项目文件
+对于获取过旧版本的用户，已完成新版本的补发。
 
-创建项目时，2D Link 会把合格贴图复制到项目目录，并让 Blender 改用这些副本。创建项目前使用的文件保持不变。此后，单贴图编辑、自动刷新和 Merge Layers 写回都针对项目贴图进行。
+## 支持信息
 
-执行多贴图写回前，2D Link 会检查关联文档和目标贴图，并为受影响的文件创建经过验证的备份。只要项目文件仍与记录的恢复状态一致，**撤销上一次合并** 就能恢复最近一次成功写回。
-
-这些保护不能替代正常的生产备份或版本管理。
-
-## 基本要求
+### 支持环境
 
 - Windows x64
-- Blender 4.2.0 至 5.1.x
-- Windows 版 Adobe Photoshop 桌面应用；无需额外安装 Photoshop 面板或扩展
-- 本地 PNG、TGA、JPG 或 JPEG 贴图文件
-- 位于标准本地磁盘的项目目录
-- 平面矩形图像面片、矩形活动 UV、一致的 2D 平面朝向，以及唯一的部件基础名称
+- Blender 4.2.0 - 5.2.0（含 5.2.0）
+- Adobe Photoshop 桌面版 CC2017 - 2026（含 2026）
 
-该工作流以保存为触发条件，不会把 Photoshop 中的单次笔触实时传输到 Blender。
+### 支持项目类型
 
-1.6.3 已在 30 组 Blender–Photoshop 版本组合中完成文档所述工作流测试。精确版本、工作流边界和购买前检查见[兼容性与购买检查清单](docs/COMPATIBILITY_AND_PURCHASE_CHECKLIST_zh-CN.md)。
-
-## 文档
-
-- [快速入门](docs/QUICK_START_zh-CN.md) — 完成一次单贴图往返和一次 Merge Layers 写回。
-- [用户指南](docs/USER_GUIDE_zh-CN.md) — 插件全部功能的详细操作说明。
-- [兼容性与购买检查清单](docs/COMPATIBILITY_AND_PURCHASE_CHECKLIST_zh-CN.md) — 实测版本、系统与资产要求、存储限制和可选 JSON 功能范围。
-- [技术支持](docs/SUPPORT_zh-CN.md) — 如何检查失败操作并提交有效的私密报告。
-- [Superhive FAQ](https://superhivemarket.com/products/brandy-2d-link/faq) — 常见购买前问题的简要说明。
-
-第一次使用时，请从[快速入门](docs/QUICK_START_zh-CN.md)开始。
+- 格式为 PNG、JPG、JPEG、TGA 的贴图。
+- PSD 中的平面角色或分层内容。
+- Blender 中的矩形面片模型。
+- 以静态构图为基础的 2D 角色或场景。
 
 ## 许可证与独立产品声明
 
 插件包采用 GPL-3.0-or-later 许可证发布，并包含对应源代码。
 
-2D Link 是独立产品，与 Adobe、Blender Foundation 及其相关组织不存在隶属或背书关系。商标信息见 [NOTICE.md](NOTICE.md)。
+Brandy Texture Link 2D 是独立产品，与 Adobe、Blender Foundation 及其相关组织不存在隶属或背书关系。商标信息见 [NOTICE.md](NOTICE.md)。

@@ -1,6 +1,6 @@
 # Notices
 
-2D Link is an independent product and is not affiliated with, authorized by, endorsed by, or sponsored by Adobe or the Blender Foundation.
+Brandy Texture Link 2D is an independent product and is not affiliated with, authorized by, endorsed by, or sponsored by Adobe or the Blender Foundation.
 
 Adobe and Photoshop are trademarks or registered trademarks of Adobe in the United States and/or other countries. Blender is a trademark or registered trademark of the Blender Foundation. All other product names and trademarks belong to their respective owners.
 
