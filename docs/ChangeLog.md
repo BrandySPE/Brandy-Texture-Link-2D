@@ -1,6 +1,6 @@
 # Brandy Texture Link 2D — Change Log
 
-[Home](../README.md) · [User Guide](UserGuide.md) · [Support](Support.md) · [Maintenance](Maintenance.md) · [更新日志](更新日志.md)
+[README](../README.md) · [User Guide](UserGuide.md) · [Support](SUPPORT.md) · [Maintenance](Maintenance.md) · [更新日志](更新日志.md)
 
 ## Brandy Texture Link 2D v1.1.0
 

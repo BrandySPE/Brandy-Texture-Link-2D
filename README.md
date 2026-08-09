@@ -1,6 +1,6 @@
 # Brandy Texture Link 2D
 
-[User Guide](docs/UserGuide.md) · [Support](docs/Support.md) · [Maintenance](docs/Maintenance.md) · [Change Log](docs/ChangeLog.md) · [中文主页](README_zh-CN.md)
+[User Guide](docs/UserGuide.md) · [Support](docs/SUPPORT.md) · [Maintenance](docs/Maintenance.md) · [Change Log](docs/ChangeLog.md) · [中文主页](README_zh-CN.md)
 
 **Brandy Texture Link 2D is a Blender add-on built for 2D game and animation workflows. It opens textures in Photoshop, reloads saved texture changes in Blender, and can create Blender assets from the layer layout of PSD documents.**
 

@@ -1,6 +1,6 @@
 # Brandy Texture Link 2D — Support
 
-[Home](../README.md) · [User Guide](UserGuide.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [技术支持](技术支持.md)
+[README](../README.md) · [User Guide](UserGuide.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [技术支持](技术支持.md)
 
 ## Purchase
 

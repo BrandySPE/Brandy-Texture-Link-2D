@@ -1,6 +1,6 @@
 # Brandy Texture Link 2D — User Guide
 
-[Home](../README.md) · [Support](Support.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [用户指南](用户指南.md)
+[README](../README.md) · [Support](SUPPORT.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [用户指南](用户指南.md)
 
 For installation and a quick-start workflow, see the [Home page](../README.md). This guide expands on that material with more detailed settings, operating notes, and troubleshooting information.
 

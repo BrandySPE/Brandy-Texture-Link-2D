@@ -1,6 +1,6 @@
 # Brandy Texture Link 2D — Maintenance
 
-[Home](../README.md) · [User Guide](UserGuide.md) · [Support](Support.md) · [Change Log](ChangeLog.md) · [维护信息](维护信息.md)
+[README](../README.md) · [User Guide](UserGuide.md) · [Support](SUPPORT.md) · [Change Log](ChangeLog.md) · [维护信息](维护信息.md)
 
 ## Testing and Support
 
