@@ -88,11 +88,11 @@ Click **Apply Merge Layers**. The add-on applies each new layer to the matching 
 
 The same workflow can be used with more than three layers.
 
+![Apply Merge Layers 1](./assets/gif/Apply_Merge_Layers_1.gif)
+
 With **Merge Into Transparency** disabled, new pixels that fall into transparent areas are clipped using the currently recorded Alpha information, so the existing pixel boundary does not expand.
 
 With **Merge Into Transparency** enabled, new pixels may be written into transparent areas. Only content outside the original texture canvas is clipped.
-
-![Apply Merge Layers 1](./assets/gif/Apply_Merge_Layers_1.gif)
 
 ![Apply Merge Layers 2](./assets/gif/Apply_Merge_Layers_2.gif)
 
