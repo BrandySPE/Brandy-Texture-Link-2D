@@ -2,89 +2,153 @@
 
 [User Guide](docs/UserGuide.md) · [Support](docs/SUPPORT.md) · [Maintenance](docs/Maintenance.md) · [Change Log](docs/ChangeLog.md) · [中文主页](README_zh-CN.md)
 
-**Brandy Texture Link 2D is a Blender add-on built for 2D game and animation workflows. It opens textures in Photoshop, reloads saved texture changes in Blender, and can create Blender assets from the layer layout of PSD documents.**
+**Brandy Texture Link 2D is a Blender add-on for 2D texture workflows. It lets you batch-edit textures in Photoshop and automatically reload saved changes in Blender.**
 
-If you work with 2D characters or scenes and need to rebuild a Blender texture layout in Photoshop, import the layer layout of a PSD document into Blender, or move back and forth while making texture edits, the add-on reduces the amount of manual relinking and setup required.
+You can create a **project folder** from either a **Blender Collection** or a **PSD document**. The project links Blender and Photoshop. It can rebuild a Blender texture layout in Photoshop or bring a PSD layer layout into Blender, then keep the textures connected for later editing and reloading.
 
-For a quick start, follow the workflows below. For more detailed use, watch the tutorials or see the [User Guide](docs/UserGuide.md).
+For 2D game and animation workflows, this reduces the manual setup and relinking normally required when editing the same asset across Blender and Photoshop.
 
-The add-on includes safeguards for file validation, project backups, project recovery, and related operations. It has also completed a 7 × 5 test matrix that includes Blender 5.2.0 LTS. See [Maintenance](docs/Maintenance.md) for test details and usage notes.
+The project folder acts as the bridge between the two applications. It includes safeguards for `project backup and recovery`, `safe undo`, `switching between projects`, and `moving project copies`. The add-on has completed a 7 × 5 version test matrix, including Blender 5.2.0 LTS.
 
-The interface is available in Chinese and English. You can change the default language with **Interface Language** under **Settings & Reports**. Restart the add-on or Blender afterward to refresh the panels.
+For a quick start, continue below. For `detailed workflows and important usage notes`, watch the tutorials or see the [User Guide](docs/UserGuide.md). For `test details`, see [Maintenance](docs/Maintenance.md).
 
-If you have questions or need to report an issue, see [Support](docs/Support.md) or contact **brandyspe2026@gmail.com**. I will reply as soon as I can after receiving your email.
+The interface is available in Chinese and English. Change the default language with **Interface Language** under **Settings & Reports**, then reload the add-on or restart Blender.
 
-## Install and Create a Project
+If you have questions or want to report an issue, see [Support](docs/SUPPORT.md) or contact `brandyspe2026@gmail.com`. I will reply as soon as I can after receiving your email.
 
-### Install the Add-on
+## Quick Start
 
-1. In Blender, open **Edit** > **Preferences** > **Get Extensions** > the menu in the upper-right corner > **Install from Disk**, then select the complete Brandy Texture Link 2D.zip package. Do not extract the ZIP file first.
+First complete the basic installation and setup:
+
+1. In Blender, open **Edit** > **Preferences** > **Get Extensions** > the menu in the upper-right corner > **Install from Disk**, then select the complete Brandy Texture Link 2D.zip package. Do not extract the ZIP first.
 
 2. Make sure Brandy Texture Link 2D is enabled under **Preferences** > **Add-ons**.
 
-3. Return to the 3D View, press `N` to open the sidebar, then open the **Brandy** tab.
+3. Return to the 3D View and press `N` to open the sidebar. Open the **Brandy** tab, then set **Photoshop Path** to `Photoshop.exe` in your Photoshop installation folder.
 
-### From Blender to Photoshop
+### Create a Project from a Blender Collection
 
-1. Open the add-on panel. Under **Photoshop Path**, select `Photoshop.exe` from your Photoshop installation folder, then click **Open Photoshop**.
+1. Under **Project Folder**, choose an empty local folder and keep **Texture Source** set to **Blender Collection**.
 
-2. Keep **Texture Source** set to **Blender Collection**. Put all flat rectangular Mesh objects you want to edit (referred to below as `2D sprites`) into one Blender collection, then choose that collection under **Project Collection**.
+2. Put all flat rectangular Mesh objects you want to edit (referred to below as `2D sprites`) into one Blender collection. Select that collection under **Project Collection**, then click **Create Project**.
 
-3. Under **Project Folder**, choose an empty local folder and click **Create Project**. If the selected path already contains a project created by the add-on, **Create Project** automatically changes to **Open Existing Project**.
+3. The add-on copies the source textures used by those `2D sprites` into the project folder and creates a new PSD document that rebuilds the texture layout from Blender in Photoshop. Your original source textures are not modified.
 
-4. The add-on copies the textures used by the 2D sprites into the project folder and creates a new PSD document. If the canvas exceeds 30,000 pixels, it automatically creates a PSB instead. Photoshop reconstructs the sprite arrangement from Blender. The source textures used before project creation are not modified.
+![Create Project from Blender](./assets/gif/Create_Project_from_Blender.gif)
 
-5. The PSD contains three reserved groups: **BTL2 Linked Content**, **BTL2 Merge Layers**, and **BTL2 Merged Layers**. Do not manually move, replace, or rename these groups. Keep the document structure in its default state.
+### Create a Project from a PSD Document
 
-## Texture Editing and Auto Reload
+1. Under **Project Folder**, choose an empty local folder, then change **Texture Source** to **Photoshop document**.
 
-### Mode 1: Edit a Single Texture
+2. Under **PSD Document**, choose the PSD you want to import. Set options such as **Transparent Pixel Padding**, **Use Alpha**, and **Sprite Z Spacing**, then click **Create Project**.
 
-When you only need to edit one texture, open its Smart Object directly from the PSD created by the add-on. You can also select a 2D sprite in Blender and click **Edit Single Texture** to open the corresponding texture file.
+3. For each successfully imported layer or asset, the add-on creates a `2D sprite` in Blender and uses the layer content as its texture. The front-to-back order of the sprites is built from the layer order in the PSD document.
 
-When **Auto Reload** is enabled (the button is highlighted), saving in Photoshop with `Ctrl+S` can trigger Blender to reload the updated texture. Auto Reload is not instantaneous; expect a delay of around 3 seconds, depending on project size and hardware.
+![Import PSD](./assets/gif/Import_PSD.gif)
 
-You can also disable **Auto Reload** and use **Reload Textures** after editing and saving.
+## Editing and Reloading
 
-In `single-texture editing`, save the `Smart Object` or `individual texture file`, not only the main PSD document.
+Whichever way you create the link, Photoshop is launched after the **project folder** is created.
 
-### Mode 2: Paint Across Multiple Textures
+The add-on also shows the editing controls, including **Edit Single Texture** and **Apply Merge Layers**, for the two main workflows: `single-texture editing` and `multi-texture editing`.
 
-Suppose you want to paint one pattern across three textures named `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`.
+The working PSD contains three layer groups: **BTL2 Linked Content**, **BTL2 Merge Layers**, and **BTL2 Merged Layers**. Do not delete these groups.
 
-Create a new layer in the main PSD and paint the artwork. Press `Ctrl+J` twice to create two copies, giving you three layers with identical content.
+**BTL2 Linked Content** contains the Smart Objects that match the names of your `2D sprites`. Their texture links, layout, and Alpha information are recorded when the project is created.
 
-Rename the three layers to `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`, place all three directly inside **BTL2 Merge Layers**, then save the main PSD document.
+**BTL2 Merge Layers** and **BTL2 Merged Layers** are used by the `multi-texture editing` workflow.
 
-Click **Apply Multi-Texture Edits** in Blender. The artwork is applied to the three matching textures. Pixels outside each target texture canvas are clipped.
+![3 Merge Layers](./assets/pic/3_Merge_Layers.png)
 
-If you do not want to keep the result, use the newly available **Revert Last Applied Edit** action to restore the previous state safely.
+### Single-Texture Editing
 
-## Import a PSD Document
+Select a `2D sprite` in Blender and click **Edit Single Texture** to open its matching texture file for editing.
 
-1. Make sure the add-on is installed as described above and Photoshop is open. In the add-on panel, change **Texture Source** to **Photoshop Document**, then choose the PSD document you want to import under **PSD Document**.
+When **Auto Reload** is enabled (the button is highlighted), saving in Photoshop with `Ctrl+S` automatically triggers a texture reload in Blender. Auto Reload is not real-time synchronization, so there may be a delay of a few seconds after saving, depending on project size and hardware.
 
-2. Under **Project Folder**, choose an empty local folder. Set options such as **Transparent Pixel Padding** and **Use Alpha**, then click **Create Project**.
+You can also disable **Auto Reload** and use **Reload Textures** manually.
 
-3. During import, the add-on creates a 2D sprite for each successfully imported layer or asset unit and connects the resulting texture to its material.
+For `single-texture editing`, edit and save either the `individual texture file` or the `individual Smart Object` in the working PSD. Saving only the working PSD does not trigger Auto Reload.
 
-For PSD files with complex structures, simplify the document when possible before importing. If the document contains many linked Smart Objects, layer styles, or similar content, the add-on provides three handling modes: **Simplify Complex Layers**, **Skip Complex Layers**, and **Preserve Usable Content**. Complex effects may still lose information during import.
+When you edit and save a texture through **Edit Single Texture**, the Alpha information recorded when the project was created is updated to match the edited texture. This gives the add-on a reliable Alpha reference after pixels have been erased and directly affects **Merge Into Transparency** and **Split Into Transparency** later.
 
-PSB files are supported as a compatibility option, but very large or highly complex documents may not import completely.
+![Single Edit](./assets/gif/Single_Edit.gif)
 
-4. After the import and project creation complete successfully, all generated 2D sprites are placed in a Blender collection. Click **Open Existing Project** to continue working with the project, then edit textures in Photoshop and use Auto Reload as usual.
+### Multi-Texture Editing
 
-## Demos and Tutorials
+This workflow centers on **Apply Merge Layers** and **Split Merge Layers**, covering several common repainting needs.
 
-The current tutorials were made for an earlier version of the add-on. The core workflow is still applicable, but some button names have changed. New tutorials will replace them when ready. Until then, use the written [User Guide](docs/UserGuide.md) as the primary reference.
+1. **Apply Merge Layers**
+
+For example, suppose you want to paint across three textures named `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`.
+
+Create three new layers in the working PSD and paint on them. Rename the layers to `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`, place all three inside **BTL2 Merge Layers**, then save the working PSD.
+
+Click **Apply Merge Layers**. The add-on applies each new layer to the matching `Leg_Thigh`, `Leg_Shin`, or `Leg_Foot` texture by name, then reloads the changed textures in Blender.
+
+The same workflow can be used with more than three layers.
+
+With **Merge Into Transparency** disabled, new pixels that fall into transparent areas are clipped using the currently recorded Alpha information, so the existing pixel boundary does not expand.
+
+With **Merge Into Transparency** enabled, new pixels may be written into transparent areas. Only content outside the original texture canvas is clipped.
+
+![Apply Merge Layers 1](./assets/gif/Apply_Merge_Layers_1.gif)
+
+![Apply Merge Layers 2](./assets/gif/Apply_Merge_Layers_2.gif)
+
+2. **Split Merge Layers**
+
+The setup is similar to **Apply Merge Layers**, and **Split Into Transparency** affects transparent areas in the same general way as **Merge Into Transparency**.
+
+The difference is that **Split Merge Layers** automatically assigns overlapping painted pixels according to the texture stacking order. Once the frontmost texture receives a new pixel, a texture hidden behind it does not receive that same pixel again.
+
+For example, suppose you want to paint one pattern across `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`, but the joints overlap because the artwork extends underneath neighboring parts. You do not want the new pixels to be written into those hidden areas.
+
+Paint the full pattern on one new layer, then press `Ctrl+J` twice to create two copies. Rename the three layers to `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot`, place them together inside **BTL2 Merge Layers**, and save the working PSD.
+
+After you click **Split Merge Layers**, the part of the pattern around the thigh and knee is assigned to the frontmost `Leg_Thigh` texture. The `Leg_Shin` texture behind it does not receive the knee pixels again and only receives the visible part of the pattern on the shin.
+
+The full pattern is then distributed across `Leg_Thigh`, `Leg_Shin`, and `Leg_Foot` without breaks or uncontrolled visual changes caused by stacking the same new pixels more than once. This is especially useful around semi-transparent edges.
+
+![Split Merge Layers](./assets/gif/Split_Merge_Layers.gif)
+
+3. **Split as One Layer**
+
+This option only affects **Split Merge Layers** and works like an automatic distribution mode.
+
+When enabled, you only need to place one new layer inside **BTL2 Merge Layers**. The add-on detects the new pixels and distributes them to all covered textures using the same logic as **Split Merge Layers**.
+
+If several layers are present, the add-on combines the new layers in **BTL2 Merge Layers** first, then performs the split.
+
+This option is convenient, but it takes longer and gives you less direct control, so it is best used on smaller areas.
+
+![Split as One Layer](./assets/gif/Split_as_One_Layer.gif)
+
+4. **Undo Last Apply** and **Undo Last Split**
+
+After **Apply Merge Layers** or **Split Merge Layers** completes, the corresponding **Undo Last Apply** or **Undo Last Split** action appears below the controls.
+
+Undo restores the textures changed by the previous operation and moves the applied or split layers back into **BTL2 Merge Layers**.
+
+Only the most recent Apply or Split can be undone, and both operations share the same undo slot. For example, if you run **Apply Merge Layers** and then **Split Merge Layers**, the earlier Apply can no longer be undone.
+
+An operation that makes no effective change, such as applying or splitting empty layers, does not consume the available undo.
+
+![Apply Undo](./assets/gif/Apply_Undo.gif)
+
+## More Information
+
+### Demos and Tutorials
+
+The current tutorials were made for an earlier version of the add-on. The core workflow still applies, but some button names have changed. They will be replaced when the new tutorials are ready. Until then, use the written [User Guide](docs/UserGuide.md) as the primary reference.
 
 - [Chinese demo and tutorial](https://www.youtube.com/watch?v=-xTnPTlHHwc)
 
 - [English demo and tutorial](https://www.youtube.com/watch?v=seKdFcPqHf4)
 
-## Get Brandy Texture Link 2D
+### Get Brandy Texture Link 2D
 
-This GitHub repository is the product home page and does not include an installable add-on package. Use the complete ZIP package provided through a sales channel.
+This GitHub repository is the product home page and does not include an installable add-on package. Use the complete ZIP provided through a sales channel.
 
 Superhive: https://superhivemarket.com/products/brandy-2d-link
 
@@ -92,28 +156,30 @@ itch.io: https://brandyspe.itch.io/brandy-2d-link
 
 Free lightweight texture-editing add-on: [Brandy Texture Link Lite](https://github.com/BrandySPE/Brandy-Texture-Link-Lite)
 
-## Other Information
+### Additional Features
 
-**Brandy Texture Link 2D** was previously released as **Brandy 2D Link**. Version **1.1.0** is the first public release under the new name.
+The add-on also includes a small set of `import/export tools`, `convenience tools`, and context-sensitive controls for `safety and recovery`. See the [User Guide](docs/UserGuide.md) for details.
 
-The rename accompanies a major overhaul of the core workflow, including `PSD import` and a simplified, rebuilt interface.
+**Brandy Texture Link 2D** was previously named **Brandy 2D Link**. Version **1.1.0** is the first public release under the new name.
 
-Users who previously received the older version have been provided with the new version.
+The rename accompanies a full overhaul of the core workflow, including new features such as `PSD document import` and `Apply/Split`, clearer behavior in areas that were previously less defined, and a simplified UI designed for everyday use and easier maintenance.
+
+Users who received an older version have already been provided with the new version.
 
 ## Support Information
 
 ### Supported Environment
 
 - Windows x64
-- Blender 4.2.0–5.2.0, including 5.2.0
-- Adobe Photoshop desktop CC2017–2026, including 2026
+- Blender 4.2.0 - 5.2.0, including 5.2.0
+- Adobe Photoshop desktop CC2017 - 2026, including 2026
 
 ### Supported Asset Types
 
 - PNG, JPG, JPEG, and TGA textures.
-- Flat characters or layered artwork in PSD documents.
+- Flat characters or layered content in PSD documents.
 - Rectangular image-plane meshes in Blender.
-- 2D characters or scenes based on a static layout.
+- 2D game and animation workflows, including 2D characters and scenes.
 
 ## License and Independent Product Notice
 
