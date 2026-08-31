@@ -1,6 +1,6 @@
 # Brandy Texture Link 2D — Maintenance
 
-[README](../README.md) · [User Guide](UserGuide.md) · [Support](SUPPORT.md) · [Change Log](ChangeLog.md) · [维护信息](维护信息.md)
+[README](../README.md) · [Quick Start](QuickStart.md) · [User Guide](UserGuide.md) · [Support](Support.md) · [Change Log](ChangeLog.md) · [维护信息](维护信息.md)
 
 ## Testing and Support
 
@@ -16,30 +16,31 @@
 |---|---|---|
 | CPU | AMD Ryzen 9 7950X, 16 cores | AMD Ryzen 5 3600, 6 cores |
 | GPU | NVIDIA RTX 4060 Ti 16GB | NVIDIA RTX 2060 6GB |
-| Memory | 32GB × 2 | 16GB × 2 |
+| Memory | 32GB * 2 | 16GB * 2 |
 | Storage | 3000GB HDD | 500GB SSD |
 
 ### Tested Versions
 
-A 7 × 5 version matrix was completed on August 21, 2026:
+The add-on was tested across a 7 * 5 version matrix on August 21, 2026:
 
-| Blender | 4.2.21 LTS | 4.3.2 | 4.4.3 | 4.5.10 LTS | 5.0.1 | 5.1.2 | 5.2.0 LTS |
-| Photoshop | CC2017 18.1.6 | 2020 21.2.1 | 2022 23.5.0 | 2025 26.10.0 | 2026 27.7.0 |
+Blender: 4.2.21 LTS, 4.3.2, 4.4.3, 4.5.10 LTS, 5.0.1, 5.1.2, 5.2.0 LTS
+
+Photoshop: CC2017 18.1.6, 2020 21.2.1, 2022 23.5.0, 2025 26.10.0, 2026 27.7.0
 
 ## Test Coverage
 
-Testing follows this process:
+The test process is as follows:
 
-Development is done mainly with Blender 5.1.2 and Photoshop 2025 26.10.0. Once a build is stable, Blender 4.2.21 LTS and 5.2.0 LTS are tested to confirm that the core features and project-linking workflow remain stable.
+Primary development uses Blender 5.1.2 and Photoshop 2025 26.10.0. Once a build is stable, Blender 4.2.21 LTS and 5.2.0 LTS are tested to confirm that the core features and project-linking workflow remain stable.
 
 The Blender and Photoshop version matrix is then retested on a second machine. The matrix focuses on code paths that are more likely to differ across Blender, Python, and Photoshop versions, including project protocols, communication between applications, state changes, file writeback, Undo, and project isolation.
 
 All test assets are stored in local project directories and include:
 
 - one simple PSD with 5 layers;
-- one small 4-layer PSD with limited complex layering;
+- one small 4-layer PSD with a small amount of complex layering;
 - one complex PSD with 49 layers;
-- one real Blender project containing 49 `2D sprites`, bones, and animation.
+- one real Blender project containing 49 2D sprites, bones, and animation.
 
 ### 1. Environment and Communication Protocols
 
@@ -55,20 +56,20 @@ Before each test run, the actual Blender, Photoshop, and add-on versions are con
 
 ### 2. JSON, Multi-Texture Assets, and the Core Round-Trip Workflow
 
-- JSON and separate textures import correctly.
-- The correct number of rectangular Mesh objects is generated from the textures.
-- Blender Mesh, Image, project Part, and Photoshop Smart Object mappings remain complete.
-- UID, texture file, size, position, corner orientation, and stacking relationships are correct.
-- The Photoshop working document is created through the normal project workflow and remains the current working document.
-- PhotoshopToSpine JSON exported from a committed project contains the same number of exported entries as project Mesh objects, and its `images` path resolves to the matching project textures.
-- **Edit Single Texture** opens the correct project texture, which can then be edited and saved in Photoshop.
-- After a manual Blender reload, the Image Buffer reflects the updated image content.
-- **Apply Merge Layers** changes the matching project textures.
-- **Split Merge Layers** and **Split as One Layer** change the matching project textures.
-- After Apply or Split, new layers are moved to the correct Photoshop archive location.
-- Undo restores only the affected project textures and returns archived layers using their original Layer IDs and order.
-- The working PSD remains open and saves normally through repeated editing, Apply, Split, and Undo operations.
-- After the complete round-trip workflow, the project mapping between Blender, the project folder, and Photoshop remains valid.
+- JSON and separate textures import correctly;
+- the correct number of rectangular Mesh objects is generated from the textures;
+- Blender Mesh, Image, project Part, and Photoshop Smart Object mappings remain complete;
+- UID, texture file, size, position, corner orientation, and stacking relationships are correct;
+- the Photoshop working document is created through the normal project workflow and remains the current working document;
+- PhotoshopToSpine JSON exported from a committed project contains the same number of exported entries as project Mesh objects, and its `images` path resolves to the matching project textures;
+- **Edit Single Texture** opens the correct project texture, which can then be edited and saved in Photoshop;
+- after a manual Blender reload, the Image Buffer reflects the updated image content;
+- **Apply Merge Layers** changes the matching project textures;
+- **Split Merge Layers** and **Split as One Layer** change the matching project textures;
+- after Apply or Split, new layers are moved to the correct Photoshop archive location;
+- Undo restores the affected project textures precisely and returns archived layers using their original Layer IDs and order;
+- the working PSD remains open and saves normally through repeated editing, Apply, Split, and Undo operations;
+- after the complete round-trip workflow, the project mapping between Blender, the project folder, and Photoshop remains valid.
 
 ### 3. PhotoshopToSpine and Spine Region Attachment
 
@@ -96,12 +97,12 @@ The test verifies that:
 
 ### 5. Open Existing Project
 
-- The Photoshop working document reopens correctly.
-- The Blender project Collection, Mesh, Image, and project identity are restored correctly.
-- All Part mappings are rebuilt.
-- Opening the same project again does not create duplicate Blender data.
-- Project files do not change simply because the project was reopened.
-- The current working document and project state remain correct.
+- The Photoshop working document reopens correctly;
+- the Blender project Collection, Mesh, Image, and project identity are restored correctly;
+- all Part mappings are rebuilt;
+- opening the same project again does not create duplicate Blender data;
+- project files do not change simply because the project was reopened;
+- the current working document and project state remain correct.
 
 ### 6. Multi-Project Switching
 
@@ -142,36 +143,36 @@ For the invalid third-party link case, the test verifies that:
 - the parent project remains unchanged;
 - no project lock, transaction state, temporary backup, or recovery state is left behind.
 
-### 8. PSD / PSB Document Import
+### 8. PSD/PSB Document Import
 
-- PSD and PSB files are saved in the correct underlying file formats.
-- Photoshop can reopen the generated baseline test document.
-- The source document remains unchanged during analysis and import.
-- The add-on receives a complete layer-analysis result.
-- Layer ID, hierarchy path, layer type, visibility, canvas size, and Bounds match the observed Photoshop state.
-- Hidden layers are ignored correctly according to the setting.
-- The default **Simplify Complex Layers** mode converts complex layer groups into a deterministic import result.
-- The built-in baseline produces 3 imported textures.
-- The Import Plan, exported PNG files, project Parts, and Blender Mesh count agree with one another.
-- Exported PNG files contain actual visible pixels.
-- Output texture dimensions for regular layers match the Photoshop Bounds.
-- Blender Mesh dimensions and layout match the composition in the Photoshop document.
-- The project working document retains the correct canvas size and PSD / PSB format.
-- The Photoshop layer-group structure required by the project is created correctly.
+- PSD and PSB files are saved in the correct underlying file formats;
+- Photoshop can reopen the generated baseline test document;
+- the source document remains unchanged during analysis and import;
+- the add-on receives a complete layer-analysis result;
+- Layer ID, hierarchy path, layer type, visibility, canvas size, and Bounds match the observed Photoshop state;
+- hidden layers are ignored correctly according to the setting;
+- the default **Simplify Complex Layers** mode converts complex layer groups into a deterministic import result;
+- the built-in baseline produces 3 imported textures;
+- the Import Plan, exported PNG files, project Parts, and Blender Mesh count agree with one another;
+- exported PNG files contain actual visible pixels;
+- output texture dimensions for regular layers match the Photoshop Bounds;
+- Blender Mesh dimensions and layout match the composition in the Photoshop document;
+- the project working document retains the correct canvas size and PSD/PSB format;
+- the Photoshop layer-group structure required by the project is created correctly.
 
 ### 9. JPG, TGA, and Everyday Utility Tools
 
-- JSON import, image linking, and dimensions for JPG and TGA.
-- TGA Alpha information.
-- Restoration of deleted materials and images from import records.
-- Synchronization of unconnected Shader parameters with matching names.
-- Safe merging of duplicate materials generated by the add-on and left unmodified.
-- Switching texture format when a same-named file in the target format already exists, with Blender Image and import metadata updated together.
+- JSON import, image linking, and dimensions for JPG and TGA;
+- TGA Alpha-channel data;
+- restoration of deleted materials and images from import records;
+- synchronization of unconnected Shader parameters with matching names;
+- safe merging of duplicate materials generated by the add-on and left unmodified;
+- switching texture format when a same-named file in the target format already exists, with Blender Image and import metadata updated together.
 
 ### 10. UI and Public Interface Contract
 
-- Registration, titles, and descriptions of core public Operators.
-- Presence, default values, and enum contents of Scene Properties used by everyday workflows.
-- Registration state of the add-on's `VIEW_3D` panels.
-- Core Chinese and English UI text and formatting templates.
-- Key public interfaces used by the UI remain intact after version updates.
+- registration, titles, and descriptions of core public Operators;
+- presence, default values, and enum contents of Scene Properties used by everyday workflows;
+- registration state of the add-on's `VIEW_3D` Panel;
+- core Chinese and English UI text and formatting templates;
+- key public interfaces used by the UI remain intact after version updates.

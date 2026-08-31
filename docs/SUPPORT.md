@@ -1,20 +1,18 @@
 # Brandy Texture Link 2D — Support
 
-[README](../README.md) · [User Guide](UserGuide.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [技术支持](技术支持.md)
+[README](../README.md) · [Quick Start](QuickStart.md) · [User Guide](UserGuide.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [技术支持](技术支持.md)
 
 ## Purchase
 
-Official purchase channels for Brandy Texture Link 2D:
+The official purchase channel for Brandy Texture Link 2D is:
 
 Superhive: https://superhivemarket.com/products/brandy-2d-link
 
-itch.io: https://brandyspe.itch.io/brandy-2d-link
+Thank you for your purchase and support. It means a great deal to me as an independent developer.
 
-Thank you for your purchase and support. It means a great deal to an independent developer.
+Update eligibility and the technical support period follow the sales terms shown on the purchase page. Any version released and obtained during your eligible update period remains yours to keep permanently.
 
-Update eligibility and the technical support period follow the sales terms shown on the storefront where you purchased the product. Any version released and obtained during your eligible update period remains yours to keep permanently.
-
-Public comments on storefront pages are intended for pre-purchase questions. Do not post execution reports, local file paths, client information, account credentials, or unreleased artwork in public comments, as this may expose private information.
+Public comments on the storefront are intended for pre-purchase questions. Please do not post diagnostic reports, local file paths, client information, account credentials, or unreleased artwork in public comments, as this may expose private information.
 
 ## Support
 
@@ -22,15 +20,15 @@ Public comments on storefront pages are intended for pre-purchase questions. Do 
 
 Maintenance and support email:
 
-**brandyspe2026@gmail.com**
+`brandyspe2026@gmail.com`
 
-I will reply within `3 business days` of receiving your email.
+I will reply within **3 business days** of receiving your email.
 
 A useful support email should include:
 
-1. your **Brandy Texture Link 2D version** and purchase channel;
+1. your Brandy Texture Link 2D version and purchase channel;
 
-2. your **Blender version**, **Windows version**, and **Photoshop version**;
+2. your Blender version, Windows version, and Photoshop version;
 
 3. how the project assets are stored, such as a standard local drive, synchronized folder, or network share. If necessary, include the relevant full path structure after removing private information;
 
@@ -46,7 +44,7 @@ Remove private or confidential information before sending your report.
 
 ### Support Scope
 
-Technical support applies to users who purchased through an official sales channel. It covers unmodified Brandy Texture Link 2D product packages, the Blender–Photoshop workflows documented in this GitHub repository, and the features described in the documentation.
+Support applies to users who purchased through an official sales channel. It covers unmodified Brandy Texture Link 2D product packages, the workflows documented in this GitHub repository, and the features described in the documentation.
 
 The following environments may require separate investigation:
 
