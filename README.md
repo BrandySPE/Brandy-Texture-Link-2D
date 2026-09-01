@@ -42,7 +42,7 @@ Switch freely between multiple project folders:
 
 [Quick Start](docs/QuickStart.md) — Get up and running quickly. Best used together with the demo video.
 
-[YouTube demo](https://www.youtube.com/watch?v=-xTnPTlHHwc) — Learn the core workflow in about 6 minutes.
+[YouTube demo](https://www.youtube.com/watch?v=Hcl-jo4UIig) — Learn the core workflow in about 6 minutes.
 
 [User Guide](docs/UserGuide.md) — Detailed workflows, limitations, and troubleshooting.
 

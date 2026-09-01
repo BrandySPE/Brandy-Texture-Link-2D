@@ -2,7 +2,7 @@
 
 [README](../README.md) · [User Guide](UserGuide.md) · [Support](Support.md) · [Maintenance](Maintenance.md) · [Change Log](ChangeLog.md) · [快速入门](快速入门.md)
 
-This guide is for getting started with Brandy Texture Link 2D. It is best used together with the [YouTube demo](https://www.youtube.com/watch?v=-xTnPTlHHwc).
+This guide is for getting started with Brandy Texture Link 2D. It is best used together with the [YouTube demo](https://www.youtube.com/watch?v=Hcl-jo4UIig).
 
 For advanced workflows, limitations, and troubleshooting, see the [User Guide](UserGuide.md).
 
@@ -65,7 +65,7 @@ Multi-texture editing mainly uses **Apply Merge Layers** and **Split Merge Layer
 
 ![Split and Apply](../assets/pic/Split_and_Apply.png)
 
-This section is easier to follow together with the [YouTube demo](https://www.youtube.com/watch?v=-xTnPTlHHwc).
+This section is easier to follow together with the [YouTube demo](https://www.youtube.com/watch?v=Hcl-jo4UIig).
 
 ### Apply Merge Layers
 

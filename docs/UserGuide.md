@@ -172,7 +172,7 @@ Choose the editing method based on whether you need the stored Alpha data to be 
 
 This workflow centers on **Apply Merge Layers** and **Split Merge Layers** and covers several common repainting needs.
 
-This section is easier to follow together with the [YouTube demo](https://www.youtube.com/watch?v=-xTnPTlHHwc).
+This section is easier to follow together with the [YouTube demo](https://www.youtube.com/watch?v=Hcl-jo4UIig).
 
 ### 1. Apply Merge Layers
 

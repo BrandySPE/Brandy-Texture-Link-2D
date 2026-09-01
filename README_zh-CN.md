@@ -42,7 +42,7 @@
 
 [快速入门](docs/快速入门.md) —— 快速上手，建议配合演示教程使用。
 
-[YouTube 演示教程](https://www.youtube.com/watch?v=-xTnPTlHHwc) —— 6 分钟掌握插件核心功能。
+[YouTube 演示教程](https://www.youtube.com/watch?v=Hcl-jo4UIig) —— 6 分钟掌握插件核心功能。
 
 [用户指南](docs/用户指南.md) —— 深度使用、设计边界与错误排查。
 
