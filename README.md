@@ -58,7 +58,11 @@ Switch freely between multiple project folders:
 
 Superhive: https://superhivemarket.com/products/texture-link-2d
 
-For a free lightweight texture-editing add-on, see the open-source GitHub project Brandy Texture Link Lite: https://github.com/BrandySPE/Brandy-Texture-Link-Lite
+Itch: https://brandyspe.itch.io/texture-link-2d
+
+For a free lightweight texture-editing add-on, see the open-source GitHub project Brandy Texture Link Lite: 
+
+https://github.com/BrandySPE/Brandy-Texture-Link-Lite
 
 ## Support Information
 
