@@ -58,6 +58,8 @@
 
 Superhive 商品页：https://superhivemarket.com/products/texture-link-2d
 
+Itch 商品页：https://brandyspe.itch.io/texture-link-2d
+
 免费获取轻量版贴图编辑插件，GitHub 开源项目 Brandy Texture Link Lite：https://github.com/BrandySPE/Brandy-Texture-Link-Lite
 
 ## 支持信息
