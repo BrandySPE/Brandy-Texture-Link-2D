@@ -6,7 +6,7 @@
 
 The official purchase channel for Brandy Texture Link 2D is:
 
-Superhive: https://superhivemarket.com/products/brandy-2d-link
+Superhive: https://superhivemarket.com/products/texture-link-2d
 
 Thank you for your purchase and support. It means a great deal to me as an independent developer.
 
