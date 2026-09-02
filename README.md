@@ -56,7 +56,7 @@ Switch freely between multiple project folders:
 
 ## Get Brandy Texture Link 2D
 
-Superhive: https://superhivemarket.com/products/brandy-2d-link
+Superhive: https://superhivemarket.com/products/texture-link-2d
 
 For a free lightweight texture-editing add-on, see the open-source GitHub project Brandy Texture Link Lite: https://github.com/BrandySPE/Brandy-Texture-Link-Lite
 
